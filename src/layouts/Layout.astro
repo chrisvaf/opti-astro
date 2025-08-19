@@ -1,6 +1,7 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import { Font } from 'astro:assets';
+import { ASTRO_TRANSITIONS_ENABLED } from 'astro:env/client';
+import { ClientRouter } from 'astro:transitions';
 
 import type { Locales } from '../../__generated/sdk';
 import Footer from '../cms/shared/Footer.astro';
@@ -64,6 +65,8 @@ const externalStylesUrl = siteStyles?.SiteStyles?.item?.cssFile?._metadata?.url?
 const canonicalUrl = Astro.url.origin + hierarchicalUrl;
 
 const graphType = graphtype !== '-' ? graphtype : 'website';
+const contentKey = contentPayload.key || '';
+
 ---
 
 <!doctype html>
@@ -91,9 +94,9 @@ const graphType = graphtype !== '-' ? graphtype : 'website';
         {graphType && <meta property="og:type" content={graphType} />}
         {hierarchicalUrl && <link rel="canonical" href={canonicalUrl} />}
         <title>{title}</title>
-        <ClientRouter />
+        {ASTRO_TRANSITIONS_ENABLED && <ClientRouter />}
     </head>
-    <body>
+    <body data-content-key={contentKey}>
         {
             EXTERNAL_PREVIEW_ENABLED && extPreviewEnabled && isDraft 
                 && (ctx === 'edit' || ctx === 'ext_preview') && (
