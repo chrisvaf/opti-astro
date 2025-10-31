@@ -17,57 +17,88 @@ const { key, data, displaySettings } = Astro.props as Props;
 const profileStyles = getProfileStyleConfig(displaySettings);
 
 const componentClass = 'component-profile';
+
+// Extract ProfileImage URL (will work once ProfileImage is synced to Graph)
+const profileImageUrl = (data as any)?.ProfileImage?.item?.Url || (data as any)?.ProfileImage?.url?.default || null;
+const profileImageAlt = (data as any)?.ProfileImage?.item?.AltText || (data as any)?.ProfileImage?.item?._metadata?.displayName || data.Name || 'Profile photo';
+
+// Adjust grid layout based on whether image exists
+const gridClasses = profileImageUrl
+    ? profileStyles.gridContainerClasses
+    : 'max-w-6xl mx-auto';
 ---
-<div>lala</div>
+
 <div
-    class:list={[profileStyles.containerClasses, componentClass]}
+    class:list={[profileStyles.outerContainerClasses, componentClass]}
     data-epi-block-id={isCmsEdit && key || undefined}
 >
-    <!-- Header Section -->
-     <div>sss</div>
-    <div class={profileStyles.headerContainerClasses}>
-        <div>
-            <h1 class={profileStyles.nameHeadingClasses}>{data.Name}</h1>
-            {data.Title && (
-                <h2 class={profileStyles.titleHeadingClasses}>{data.Title}</h2>
+    <div class:list={gridClasses}>
+        <!-- Left Column: Profile Image -->
+        {profileImageUrl && (
+            <div class={profileStyles.leftColumnClasses}>
+                <img
+                    src={profileImageUrl}
+                    alt={profileImageAlt}
+                    class={profileStyles.profileImageClasses}
+                />
+            </div>
+        )}
+
+        <!-- Right Column: Content -->
+        <div class={profileStyles.rightColumnClasses}>
+            <!-- Header -->
+            <div>
+                <h1 class={profileStyles.nameHeadingClasses}>{data.Name}</h1>
+                {data.Title && (
+                    <h2 class={profileStyles.titleHeadingClasses}>{data.Title}</h2>
+                )}
+            </div>
+
+            <!-- Bio Section -->
+            {data.Bio?.html && (
+                <>
+                    <div class={profileStyles.sectionDividerClasses}></div>
+                    <div class={profileStyles.bioContainerClasses}>
+                        <h3 class={profileStyles.sectionTitleClasses}>My Philosophy of Care</h3>
+                        <div class={profileStyles.bioTextClasses} set:html={data.Bio.html} />
+                    </div>
+                </>
+            )}
+
+            <!-- Achievements Section -->
+            {data.Achievements && data.Achievements.length > 0 && (
+                <>
+                    <div class={profileStyles.sectionDividerClasses}></div>
+                    <div class={profileStyles.achievementsContainerClasses}>
+                        <h3 class={profileStyles.sectionTitleClasses}>
+                            Education & Certifications
+                        </h3>
+                        <ul class={profileStyles.achievementsListClasses}>
+                            {data.Achievements.map((achievement) => (
+                                <li class={profileStyles.achievementsItemClasses}>{achievement}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </>
+            )}
+
+            <!-- Testimonials Section -->
+            {data.Testimonials && data.Testimonials.length > 0 && (
+                <>
+                    <div class={profileStyles.sectionDividerClasses}></div>
+                    <div class={profileStyles.testimonialsContainerClasses}>
+                        <h3 class={profileStyles.sectionTitleClasses}>
+                            Patient Stories
+                        </h3>
+                        {data.Testimonials.map((testimonial) => (
+                            <div class={profileStyles.testimonialCardClasses}>
+                                <p class={profileStyles.testimonialQuoteClasses} set:html={testimonial?.Quote?.html} />
+                                <p class={profileStyles.testimonialAuthorClasses}>— {testimonial?.Author}</p>
+                            </div>
+                        ))}
+                    </div>
+                </>
             )}
         </div>
     </div>
-
-    <!-- Bio Section -->
-    {data.Bio?.html && (
-        <div class={profileStyles.bioContainerClasses}>
-            <h3 class={profileStyles.sectionTitleClasses}>My Philosophy of Care</h3>
-            <div class={profileStyles.bioTextClasses} set:html={data.Bio.html} />
-        </div>
-    )}
-
-    <!-- Achievements Section -->
-    {data.Achievements && data.Achievements.length > 0 && (
-        <div class={profileStyles.achievementsContainerClasses}>
-            <h3 class={profileStyles.sectionTitleClasses}>
-                Education & Certifications / Key Achievements
-            </h3>
-            <ul class={profileStyles.achievementsListClasses}>
-                {data.Achievements.map((achievement) => (
-                    <li class={profileStyles.achievementsItemClasses}>{achievement}</li>
-                ))}
-            </ul>
-        </div>
-    )}
-
-    <!-- Testimonials Section -->
-    {data.Testimonials && data.Testimonials.length > 0 && (
-        <div class={profileStyles.testimonialsContainerClasses}>
-            <h3 class={profileStyles.sectionTitleClasses}>
-                Patient Stories / Testimonials
-            </h3>
-            {data.Testimonials.map((testimonial) => (
-                <div class={profileStyles.testimonialCardClasses}>
-                    <p class={profileStyles.testimonialQuoteClasses} set:html={`"${testimonial?.Quote?.html}"`} />
-                    <p class={profileStyles.testimonialAuthorClasses}>- {testimonial?.Author}</p>
-                </div>
-            ))}
-        </div>
-    )}
 </div>

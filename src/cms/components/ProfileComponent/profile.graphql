@@ -1,5 +1,8 @@
 fragment Profile on Profile {
-    Name
+    ProfileImage {
+        ...ContentUrl
+    }
+    ProfileName
     Title
     Bio {
         html

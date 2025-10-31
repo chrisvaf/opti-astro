@@ -18,16 +18,15 @@
 			"required": false,
 			"group": "Information",
 			"sortOrder": 10,
-			"indexingType": "disabled",
 			"editorSettings": {},
 			"allowedTypes": [
 				"image"
 			],
 			"restrictedTypes": []
 		},
-		"Name": {
+		"ProfileName": {
 			"type": "string",
-			"displayName": "Name",
+			"displayName": "Profile Name",
 			"description": "",
 			"localized": true,
 			"required": false,
@@ -38,7 +37,7 @@
 		},
 		"Title": {
 			"type": "string",
-			"displayName": "Title/Specialty",
+			"displayName": "Title",
 			"description": "",
 			"localized": true,
 			"required": false,
@@ -50,7 +49,7 @@
 		"Bio": {
 			"type": "string",
 			"format": "html",
-			"displayName": "Bio/Philosophy",
+			"displayName": "Bio",
 			"description": "",
 			"localized": true,
 			"required": false,
@@ -61,7 +60,7 @@
 		},
 		"Achievements": {
 			"type": "array",
-			"displayName": "Education & Certifications / Key Achievements",
+			"displayName": "Achievements",
 			"description": "",
 			"localized": true,
 			"required": false,
@@ -74,7 +73,7 @@
 		},
 		"Testimonials": {
 			"type": "array",
-			"displayName": "Patient Stories / Testimonials",
+			"displayName": "Testimonials",
 			"description": "",
 			"localized": false,
 			"required": false,
