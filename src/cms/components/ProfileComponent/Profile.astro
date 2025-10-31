@@ -20,7 +20,7 @@ const componentClass = 'component-profile';
 
 // Extract ProfileImage URL (will work once ProfileImage is synced to Graph)
 const profileImageUrl = (data as any)?.ProfileImage?.item?.Url || (data as any)?.ProfileImage?.url?.default || null;
-const profileImageAlt = (data as any)?.ProfileImage?.item?.AltText || (data as any)?.ProfileImage?.item?._metadata?.displayName || data.Name || 'Profile photo';
+const profileImageAlt = (data as any)?.ProfileImage?.item?.AltText || (data as any)?.ProfileImage?.item?._metadata?.displayName || data.ProfileName || 'Profile photo';
 
 // Adjust grid layout based on whether image exists
 const gridClasses = profileImageUrl
@@ -48,7 +48,7 @@ const gridClasses = profileImageUrl
         <div class={profileStyles.rightColumnClasses}>
             <!-- Header -->
             <div>
-                <h1 class={profileStyles.nameHeadingClasses}>{data.Name}</h1>
+                <h1 class={profileStyles.nameHeadingClasses}>{data.ProfileName}</h1>
                 {data.Title && (
                     <h2 class={profileStyles.titleHeadingClasses}>{data.Title}</h2>
                 )}
