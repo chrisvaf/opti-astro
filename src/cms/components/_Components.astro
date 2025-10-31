@@ -4,6 +4,7 @@ import ArticlePageCard from '../pages/ArticlePage/ArticlePageCard.astro';
 import ArticleList from './ArticleListComponent/ArticleList.astro';
 import Button from './ButtonComponent/Button.astro';
 import CallToAction from './CallToActionComponent/CallToAction.astro';
+import Profile from './ProfileComponent/Profile.astro';
 import Card from './CardComponent/Card.astro';
 import Carousel from './CarouselComponent/Carousel.astro';
 import Collapse from './CollapseComponent/Collapse.astro';
@@ -47,6 +48,16 @@ const componentType = component._metadata.types[0];
             contentPayload={contentPayload}
             data={component}
             displayTemplateKey={displayTemplateKey}
+            displaySettings={displaySettings}
+        />
+    )
+}
+{
+    componentType === 'Profile' && (
+        <Profile
+            key={data?.key}
+            contentPayload={contentPayload}
+            data={component}
             displaySettings={displaySettings}
         />
     )
