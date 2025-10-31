@@ -1,0 +1,28 @@
+---
+import type { DisplaySettingsFragment, TestimonialFragment } from '../../../../__generated/sdk';
+import type { ContentPayload } from '../../../graphql/shared/ContentPayload';
+import { getTestimonialStyleConfig } from './TestimonialStyling';
+import { isEditContext } from '../../shared/utils.ts';
+
+const isCmsEdit = isEditContext(Astro.url);
+
+export interface Props {
+    key: string;
+    data: TestimonialFragment;
+    displaySettings: DisplaySettingsFragment[];
+    contentPayload: ContentPayload;
+}
+const { key, data, displaySettings } = Astro.props as Props;
+
+const testimonialStyles = getTestimonialStyleConfig(displaySettings);
+
+const componentClass = 'component-testimonial';
+---
+
+<div
+    class:list={[testimonialStyles.containerClasses, componentClass]}
+    data-epi-block-id={isCmsEdit && key || undefined}
+>
+    <p class={testimonialStyles.quoteClasses} set:html={`"${data.Quote?.html}"`}></p>
+    <p class={testimonialStyles.authorClasses}>- {data.Author}</p>
+</div>

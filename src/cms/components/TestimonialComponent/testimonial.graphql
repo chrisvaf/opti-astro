@@ -1,0 +1,6 @@
+fragment Testimonial on Testimonial {
+    Quote {
+        html
+    }
+    Author
+}

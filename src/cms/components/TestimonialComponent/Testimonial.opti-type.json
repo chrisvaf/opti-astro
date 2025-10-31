@@ -1,0 +1,35 @@
+{
+	"key": "Testimonial",
+	"displayName": "Testimonial",
+	"description": "A reusable component for displaying a single testimonial or quote.",
+	"baseType": "component",
+	"sortOrder": 0,
+	"mayContainTypes": [],
+	"mediaFileExtensions": [],
+	"compositionBehaviors": [],
+	"properties": {
+		"Quote": {
+			"type": "string",
+			"format": "html",
+			"displayName": "Quote",
+			"description": "",
+			"localized": true,
+			"required": false,
+			"group": "Information",
+			"sortOrder": 10,
+			"indexingType": "searchable",
+			"editorSettings": {}
+		},
+		"Author": {
+			"type": "string",
+			"displayName": "Author",
+			"description": "",
+			"localized": true,
+			"required": false,
+			"group": "Information",
+			"sortOrder": 20,
+			"indexingType": "searchable",
+			"editorSettings": {}
+		}
+	}
+}

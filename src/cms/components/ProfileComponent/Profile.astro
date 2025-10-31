@@ -1,0 +1,72 @@
+---
+import type { DisplaySettingsFragment, ProfileFragment } from '../../../../__generated/sdk';
+import type { ContentPayload } from '../../../graphql/shared/ContentPayload';
+import { getProfileStyleConfig } from './ProfileStyling';
+import { isEditContext } from '../../shared/utils.ts';
+
+const isCmsEdit = isEditContext(Astro.url);
+
+export interface Props {
+    key: string;
+    data: ProfileFragment;
+    displaySettings: DisplaySettingsFragment[];
+    contentPayload: ContentPayload;
+}
+const { key, data, displaySettings } = Astro.props as Props;
+
+const profileStyles = getProfileStyleConfig(displaySettings);
+
+const componentClass = 'component-profile';
+---
+
+<div
+    class:list={[profileStyles.containerClasses, componentClass]}
+    data-epi-block-id={isCmsEdit && key || undefined}
+>
+    <!-- Header Section -->
+    <div class={profileStyles.headerContainerClasses}>
+        <div>
+            <h1 class={profileStyles.nameHeadingClasses}>{data.Name}</h1>
+            {data.Title && (
+                <h2 class={profileStyles.titleHeadingClasses}>{data.Title}</h2>
+            )}
+        </div>
+    </div>
+
+    <!-- Bio Section -->
+    {data.Bio?.html && (
+        <div class={profileStyles.bioContainerClasses}>
+            <h3 class={profileStyles.sectionTitleClasses}>My Philosophy of Care</h3>
+            <div class={profileStyles.bioTextClasses} set:html={data.Bio.html} />
+        </div>
+    )}
+
+    <!-- Achievements Section -->
+    {data.Achievements && data.Achievements.length > 0 && (
+        <div class={profileStyles.achievementsContainerClasses}>
+            <h3 class={profileStyles.sectionTitleClasses}>
+                Education & Certifications / Key Achievements
+            </h3>
+            <ul class={profileStyles.achievementsListClasses}>
+                {data.Achievements.map((achievement) => (
+                    <li class={profileStyles.achievementsItemClasses}>{achievement}</li>
+                ))}
+            </ul>
+        </div>
+    )}
+
+    <!-- Testimonials Section -->
+    {data.Testimonials && data.Testimonials.length > 0 && (
+        <div class={profileStyles.testimonialsContainerClasses}>
+            <h3 class={profileStyles.sectionTitleClasses}>
+                Patient Stories / Testimonials
+            </h3>
+            {data.Testimonials.map((testimonial) => (
+                <div class={profileStyles.testimonialCardClasses}>
+                    <p class={profileStyles.testimonialQuoteClasses} set:html={`"${testimonial?.Quote?.html}"`} />
+                    <p class={profileStyles.testimonialAuthorClasses}>- {testimonial?.Author}</p>
+                </div>
+            ))}
+        </div>
+    )}
+</div>

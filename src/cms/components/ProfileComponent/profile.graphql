@@ -1,0 +1,14 @@
+fragment Profile on Profile {
+    Name
+    Title
+    Bio {
+        html
+    }
+    Achievements
+    Testimonials {
+        Quote {
+            html
+        }
+        Author
+    }
+}

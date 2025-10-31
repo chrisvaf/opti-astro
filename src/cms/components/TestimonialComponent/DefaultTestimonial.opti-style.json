@@ -1,0 +1,7 @@
+{
+	"key": "DefaultTestimonial",
+	"displayName": "Testimonial",
+	"contentType": "TestimonialComponent",
+	"isDefault": true,
+	"settings": {}
+}
