@@ -4,7 +4,6 @@ import ArticlePageCard from '../pages/ArticlePage/ArticlePageCard.astro';
 import ArticleList from './ArticleListComponent/ArticleList.astro';
 import Button from './ButtonComponent/Button.astro';
 import CallToAction from './CallToActionComponent/CallToAction.astro';
-import Profile from './ProfileComponent/Profile.astro';
 import Card from './CardComponent/Card.astro';
 import Carousel from './CarouselComponent/Carousel.astro';
 import Collapse from './CollapseComponent/Collapse.astro';
@@ -20,7 +19,8 @@ import Text from './TextComponent/Text.astro';
 import Video from './VideoComponent/Video.astro';
 import VideoExternal from './VideoExternalComponent/VideoExternal.astro';
 import OptiForm from '../forms/base/OptiFormsContainerDataComponent/OptiForm.astro';
-
+import Profile from './ProfileComponent/Profile.astro';
+import Testimonial from './TestimonialComponent/Testimonial.astro';
 interface Props {
     contentPayload: ContentPayload;
     data: any;
@@ -55,6 +55,16 @@ const componentType = component._metadata.types[0];
 {
     componentType === 'Profile' && (
         <Profile
+            key={data?.key}
+            contentPayload={contentPayload}
+            data={component}
+            displaySettings={displaySettings}
+        />
+    )
+}
+{
+    componentType === 'Testimonial' && (
+        <Testimonial
             key={data?.key}
             contentPayload={contentPayload}
             data={component}
