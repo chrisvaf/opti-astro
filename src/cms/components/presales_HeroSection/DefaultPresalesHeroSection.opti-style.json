@@ -1,0 +1,7 @@
+{
+    "key": "DefaultPresalesHeroSection",
+    "displayName": "Hero Section (Health Demo)",
+    "contentType": "presales_HeroSection",
+    "isDefault": true,
+    "settings": {}
+}

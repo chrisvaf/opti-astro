@@ -1,0 +1,63 @@
+{
+    "key": "presales_StatsSection",
+    "displayName": "Presales - Stats Section",
+    "description": "Health demo 'Why Choose Us' section with green section label, navy heading, and 3-column stat cards.",
+    "baseType": "component",
+    "sortOrder": 0,
+    "mayContainTypes": [],
+    "mediaFileExtensions": [],
+    "compositionBehaviors": ["sectionEnabled"],
+    "properties": {
+        "SectionLabel": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Section Label",
+            "description": "Green uppercase label above the heading, e.g. 'Why Opti Health Orthopedics'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 10,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "Heading": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Heading",
+            "description": "Navy section heading, e.g. \"South Florida's Leader in Orthopedic Care\"",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 20,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "Description": {
+            "type": "string",
+            "format": "html",
+            "displayName": "Description",
+            "description": "Gray descriptive text below the heading",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 30,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "StatItems": {
+            "type": "array",
+            "displayName": "Stat Items",
+            "description": "The stat cards to display (3 recommended for a balanced layout)",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 40,
+            "editorSettings": {},
+            "items": {
+                "type": "content",
+                "allowedTypes": [],
+                "restrictedTypes": []
+            }
+        }
+    }
+}

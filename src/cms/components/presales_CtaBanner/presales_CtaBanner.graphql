@@ -1,0 +1,14 @@
+fragment PresalesCtaBanner on presales_CtaBanner {
+    Heading
+    BodyText {
+        html
+    }
+    PrimaryButtonLabel
+    PrimaryButtonLink {
+        ...LinkCollection
+    }
+    SecondaryButtonLabel
+    SecondaryButtonLink {
+        ...LinkCollection
+    }
+}

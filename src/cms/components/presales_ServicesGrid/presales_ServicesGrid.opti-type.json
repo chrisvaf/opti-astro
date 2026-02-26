@@ -1,0 +1,50 @@
+{
+    "key": "presales_ServicesGrid",
+    "displayName": "Presales - Services Grid",
+    "description": "Health demo services quick links grid with emoji icon cards and optional highlighted current specialty.",
+    "baseType": "component",
+    "sortOrder": 0,
+    "mayContainTypes": [],
+    "mediaFileExtensions": [],
+    "compositionBehaviors": ["sectionEnabled"],
+    "properties": {
+        "SectionLabel": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Section Label",
+            "description": "Small label displayed above the heading",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 10,
+            "editorSettings": {}
+        },
+        "Heading": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Heading",
+            "description": "Section heading displayed above the grid",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 20,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "ServiceItems": {
+            "type": "array",
+            "displayName": "Service Items",
+            "description": "Service or specialty cards to display in the grid (6 recommended)",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 30,
+            "editorSettings": {},
+            "items": {
+                "type": "content",
+                "allowedTypes": [],
+                "restrictedTypes": []
+            }
+        }
+    }
+}

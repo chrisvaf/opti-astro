@@ -1,0 +1,35 @@
+{
+    "key": "presales_BreadcrumbItem",
+    "displayName": "Presales - Breadcrumb Item",
+    "description": "A single breadcrumb navigation item for the health demo hero section.",
+    "baseType": "component",
+    "sortOrder": 0,
+    "mayContainTypes": [],
+    "mediaFileExtensions": [],
+    "compositionBehaviors": [],
+    "properties": {
+        "Label": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Label",
+            "description": "The text to display for this breadcrumb item",
+            "localized": true,
+            "required": true,
+            "group": "Information",
+            "sortOrder": 10,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "Link": {
+            "type": "component",
+            "contentType": "link",
+            "displayName": "Link",
+            "description": "Where this breadcrumb item links to (leave empty for the last/current item)",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 20,
+            "editorSettings": {}
+        }
+    }
+}

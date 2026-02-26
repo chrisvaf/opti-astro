@@ -1,0 +1,24 @@
+{
+    "key": "presales_TrustBadge",
+    "displayName": "Presales - Trust Badge",
+    "description": "A trust badge pill displayed in the health demo hero section.",
+    "baseType": "component",
+    "sortOrder": 0,
+    "mayContainTypes": [],
+    "mediaFileExtensions": [],
+    "compositionBehaviors": [],
+    "properties": {
+        "Text": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Text",
+            "description": "Trust badge text, e.g. 'Board-certified surgeons'",
+            "localized": true,
+            "required": true,
+            "group": "Information",
+            "sortOrder": 10,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        }
+    }
+}

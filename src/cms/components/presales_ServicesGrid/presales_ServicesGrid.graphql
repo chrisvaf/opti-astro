@@ -1,0 +1,15 @@
+fragment PresalesServicesGrid on presales_ServicesGrid {
+    SectionLabel
+    Heading
+    ServiceItems {
+        ... on presales_ServiceItem {
+            Emoji
+            ServiceName
+            ServiceLink {
+                ...LinkCollection
+            }
+            IsCurrentSpecialty
+            HighlightLabel
+        }
+    }
+}

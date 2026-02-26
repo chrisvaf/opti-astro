@@ -1,0 +1,7 @@
+{
+    "key": "DefaultPresalesServicesGrid",
+    "displayName": "Services Grid (Health Demo)",
+    "contentType": "presales_ServicesGrid",
+    "isDefault": true,
+    "settings": {}
+}

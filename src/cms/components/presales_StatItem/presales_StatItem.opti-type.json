@@ -1,0 +1,69 @@
+{
+    "key": "presales_StatItem",
+    "displayName": "Presales - Stat Item",
+    "description": "A single stat card for the health demo Why Choose Us section.",
+    "baseType": "component",
+    "sortOrder": 0,
+    "mayContainTypes": [],
+    "mediaFileExtensions": [],
+    "compositionBehaviors": [],
+    "properties": {
+        "IconKey": {
+            "type": "string",
+            "format": "selectOne",
+            "displayName": "Icon",
+            "description": "Icon to display on the stat card",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 10,
+            "editorSettings": {},
+            "enum": {
+                "values": [
+                    { "displayName": "Users (people)", "value": "users" },
+                    { "displayName": "Clock (time)", "value": "clock" },
+                    { "displayName": "Trending Up (chart)", "value": "trending_up" },
+                    { "displayName": "Heart", "value": "heart" },
+                    { "displayName": "Award / Medal", "value": "award" },
+                    { "displayName": "Star", "value": "star" },
+                    { "displayName": "Shield", "value": "shield" }
+                ]
+            }
+        },
+        "StatNumber": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Stat Number",
+            "description": "Large stat number, e.g. '120+' or '15k+'",
+            "localized": true,
+            "required": true,
+            "group": "Information",
+            "sortOrder": 20,
+            "editorSettings": {}
+        },
+        "StatLabel": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Stat Label",
+            "description": "Green label below the number, e.g. 'Orthopedic Specialists'",
+            "localized": true,
+            "required": true,
+            "group": "Information",
+            "sortOrder": 30,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "Description": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Description",
+            "description": "Short description text below the label",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 40,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        }
+    }
+}

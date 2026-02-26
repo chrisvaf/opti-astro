@@ -1,0 +1,125 @@
+---
+import { Image as AstroImage } from 'astro:assets';
+import type {
+    PresalesHeroSectionFragment,
+    DisplaySettingsFragment,
+} from '../../../../__generated/sdk';
+import type { ContentPayload } from '../../../graphql/shared/ContentPayload';
+import { isEditContext, getLink } from '../../shared/utils.ts';
+import type { ButtonLinkData } from '../../shared/utils.ts';
+
+const isCmsEdit = isEditContext(Astro.url);
+const currentDomain = Astro.url.origin;
+
+export interface Props {
+    key: string;
+    data: PresalesHeroSectionFragment;
+    displaySettings: DisplaySettingsFragment[];
+    contentPayload: ContentPayload;
+}
+
+const { key, data } = Astro.props as Props;
+
+type BreadcrumbItem = Extract<NonNullable<NonNullable<PresalesHeroSectionFragment['BreadcrumbItems']>[number]>, { __typename?: 'presales_BreadcrumbItem' }>;
+type TrustBadge = Extract<NonNullable<NonNullable<PresalesHeroSectionFragment['TrustBadges']>[number]>, { __typename?: 'presales_TrustBadge' }>;
+
+const imageUrl = data?.BackgroundImage?.url?.default || data?.BackgroundImage?.url?.hierarchical || null;
+const breadcrumbItems = (data?.BreadcrumbItems || []).filter((item): item is BreadcrumbItem => item?.__typename === 'presales_BreadcrumbItem');
+const trustBadges = (data?.TrustBadges || []).filter((badge): badge is TrustBadge => badge?.__typename === 'presales_TrustBadge');
+
+const componentClass = 'component-presales-hero-section';
+---
+
+<section
+    class:list={[componentClass, 'relative bg-[#003087] text-white overflow-hidden']}
+    data-epi-block-id={isCmsEdit && key || undefined}
+>
+    <!-- Background image -->
+    {imageUrl && (
+        <AstroImage
+            src={imageUrl}
+            alt=""
+            class="absolute inset-0 w-full h-full object-cover opacity-20"
+            inferSize={true}
+        />
+    )}
+
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#003087] via-[#003087]/90 to-transparent"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+
+        <!-- Breadcrumb -->
+        {breadcrumbItems.length > 0 && (
+            <nav class="flex items-center flex-wrap gap-1.5 text-sm text-blue-200 mb-6" aria-label="Breadcrumb">
+                {breadcrumbItems.map((item, index) => {
+                    const isLast = index === breadcrumbItems.length - 1;
+                    const href = item?.Link ? getLink(item.Link as ButtonLinkData, currentDomain) : null;
+                    return (
+                        <span class="flex items-center gap-1.5">
+                            {!isLast && href ? (
+                                <a href={href} class="hover:text-white transition-colors duration-150">{item?.Label}</a>
+                            ) : (
+                                <span class:list={[isLast ? 'text-white font-medium' : '']}>{item?.Label}</span>
+                            )}
+                            {!isLast && (
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-blue-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            )}
+                        </span>
+                    );
+                })}
+            </nav>
+        )}
+
+        <!-- Specialty badge -->
+        {data?.SpecialtyBadge && (
+            <div class="inline-flex items-center gap-2 bg-[#2EA84A] text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {data.SpecialtyBadge}
+            </div>
+        )}
+
+        <!-- Headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+            {data?.HeadlineFirst && <span class="text-white">{data.HeadlineFirst}{' '}</span>}
+            {data?.HeadlineSecond && <span class="text-[#2EA84A]">{data.HeadlineSecond}</span>}
+        </h1>
+
+        <!-- Subheading -->
+        {data?.Subheading && (
+            <p class="text-blue-100 text-lg max-w-2xl mb-8 leading-relaxed">{data.Subheading}</p>
+        )}
+
+        <!-- Trust badges -->
+        {trustBadges.length > 0 && (
+            <div class="flex flex-wrap gap-3">
+                {trustBadges.map((badge) => (
+                    <div class="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 text-sm font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#2EA84A] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        {badge?.Text}
+                    </div>
+                ))}
+            </div>
+        )}
+    </div>
+
+    <!-- Bottom wave transition to next section -->
+    <div class="absolute bottom-0 left-0 right-0" aria-hidden="true">
+        <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full block">
+            <path d="M0,32 C240,64 480,0 720,32 C960,64 1200,0 1440,32 L1440,64 L0,64 Z" fill="#F7F8FA"/>
+        </svg>
+    </div>
+</section>
+
+<style>
+    .component-presales-hero-section {
+        min-height: 420px;
+    }
+</style>

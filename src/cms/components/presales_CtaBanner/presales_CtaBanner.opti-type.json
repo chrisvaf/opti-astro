@@ -1,0 +1,80 @@
+{
+    "key": "presales_CtaBanner",
+    "displayName": "Presales - CTA Banner",
+    "description": "Health demo full-width green call-to-action banner with heading, body text, and two buttons (primary + secondary/phone).",
+    "baseType": "component",
+    "sortOrder": 0,
+    "mayContainTypes": [],
+    "mediaFileExtensions": [],
+    "compositionBehaviors": ["sectionEnabled", "elementEnabled"],
+    "properties": {
+        "Heading": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Heading",
+            "description": "Main heading text, e.g. 'Have an orthopedic question?'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 10,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "BodyText": {
+            "type": "string",
+            "format": "html",
+            "displayName": "Body Text",
+            "description": "Descriptive text below the heading",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 20,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "PrimaryButtonLabel": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Primary Button Label",
+            "description": "White button text, e.g. 'Book Appointment'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 30,
+            "editorSettings": {}
+        },
+        "PrimaryButtonLink": {
+            "type": "component",
+            "contentType": "link",
+            "displayName": "Primary Button Link",
+            "description": "Where the primary (white) button links to",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 40,
+            "editorSettings": {}
+        },
+        "SecondaryButtonLabel": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Secondary Button Label",
+            "description": "Outline button text, e.g. 'Call 786-596-1960'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 50,
+            "editorSettings": {}
+        },
+        "SecondaryButtonLink": {
+            "type": "component",
+            "contentType": "link",
+            "displayName": "Secondary Button Link",
+            "description": "Where the secondary (outline) button links to — use tel: prefix for phone numbers",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 60,
+            "editorSettings": {}
+        }
+    }
+}

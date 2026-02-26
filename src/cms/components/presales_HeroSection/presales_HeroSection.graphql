@@ -1,0 +1,22 @@
+fragment PresalesHeroSection on presales_HeroSection {
+    BackgroundImage {
+        ...ContentUrl
+    }
+    BreadcrumbItems {
+        ... on presales_BreadcrumbItem {
+            Label
+            Link {
+                ...LinkCollection
+            }
+        }
+    }
+    SpecialtyBadge
+    HeadlineFirst
+    HeadlineSecond
+    Subheading
+    TrustBadges {
+        ... on presales_TrustBadge {
+            Text
+        }
+    }
+}

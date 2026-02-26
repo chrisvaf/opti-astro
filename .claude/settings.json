@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/chris.vafiadis/Documents/Work/Code/saas-cms/**)",
+      "Bash(yarn type:push presales_HeroSection)",
+      "Bash(yarn type:push presales_StatsSection)",
+      "Bash(yarn type:push presales_ServicesGrid)",
+      "Bash(yarn codegen)",
+      "Bash(yarn build)",
+      "Bash(./node_modules/.bin/astro check)",
+      "Bash(yarn style:push DefaultPresalesHeroSection)",
+      "Bash(yarn style:push DefaultPresalesStatsSection)",
+      "Bash(yarn style:push DefaultPresalesServicesGrid)",
+      "Bash(yarn style:push DefaultPresalesCtaBanner)"
+    ]
+  }
+}

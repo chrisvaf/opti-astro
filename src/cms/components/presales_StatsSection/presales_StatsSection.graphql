@@ -1,0 +1,15 @@
+fragment PresalesStatsSection on presales_StatsSection {
+    SectionLabel
+    Heading
+    SectionDescription: Description {
+        html
+    }
+    StatItems {
+        ... on presales_StatItem {
+            IconKey
+            StatNumber
+            StatLabel
+            Description
+        }
+    }
+}

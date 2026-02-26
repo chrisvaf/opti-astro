@@ -1,0 +1,82 @@
+---
+import type {
+    PresalesCtaBannerFragment,
+    DisplaySettingsFragment,
+} from '../../../../__generated/sdk';
+import type { ContentPayload } from '../../../graphql/shared/ContentPayload';
+import { isEditContext, getLink } from '../../shared/utils.ts';
+import type { ButtonLinkData } from '../../shared/utils.ts';
+
+const isCmsEdit = isEditContext(Astro.url);
+const currentDomain = Astro.url.origin;
+
+export interface Props {
+    key: string;
+    data: PresalesCtaBannerFragment;
+    displaySettings: DisplaySettingsFragment[];
+    contentPayload: ContentPayload;
+}
+
+const { key, data } = Astro.props as Props;
+
+const primaryHref = data?.PrimaryButtonLink
+    ? getLink(data.PrimaryButtonLink as ButtonLinkData, currentDomain)
+    : '#';
+const primaryTarget = (data?.PrimaryButtonLink as any)?.target || '_self';
+
+const secondaryHref = data?.SecondaryButtonLink
+    ? getLink(data.SecondaryButtonLink as ButtonLinkData, currentDomain)
+    : '#';
+const secondaryTarget = (data?.SecondaryButtonLink as any)?.target || '_self';
+
+const componentClass = 'component-presales-cta-banner';
+---
+
+<section
+    class:list={[componentClass, 'bg-[#2EA84A] text-white py-12 lg:py-16']}
+    data-epi-block-id={isCmsEdit && key || undefined}
+>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+        <!-- Heading -->
+        {data?.Heading && (
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-white mb-4">
+                {data.Heading}
+            </h2>
+        )}
+
+        <!-- Body text -->
+        {data?.BodyText?.html && (
+            <div
+                class="text-green-100 text-base lg:text-lg leading-relaxed mb-8 max-w-2xl mx-auto"
+                set:html={data.BodyText.html}
+            />
+        )}
+
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+            <!-- Primary button (white bg, green text) -->
+            {data?.PrimaryButtonLabel && (
+                <a
+                    href={primaryHref}
+                    target={primaryTarget}
+                    class="inline-block bg-white text-[#2EA84A] font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:bg-green-50 hover:shadow-lg active:scale-[0.99] text-base"
+                >
+                    {data.PrimaryButtonLabel}
+                </a>
+            )}
+
+            <!-- Secondary button (white outline) -->
+            {data?.SecondaryButtonLabel && (
+                <a
+                    href={secondaryHref}
+                    target={secondaryTarget}
+                    class="inline-block border-2 border-white text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:bg-white/10 active:scale-[0.99] text-base"
+                >
+                    {data.SecondaryButtonLabel}
+                </a>
+            )}
+        </div>
+    </div>
+</section>

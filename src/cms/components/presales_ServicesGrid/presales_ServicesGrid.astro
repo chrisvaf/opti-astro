@@ -1,0 +1,101 @@
+---
+import type {
+    PresalesServicesGridFragment,
+    DisplaySettingsFragment,
+} from '../../../../__generated/sdk';
+import type { ContentPayload } from '../../../graphql/shared/ContentPayload';
+import { isEditContext, getLink } from '../../shared/utils.ts';
+import type { ButtonLinkData } from '../../shared/utils.ts';
+
+const isCmsEdit = isEditContext(Astro.url);
+const currentDomain = Astro.url.origin;
+
+export interface Props {
+    key: string;
+    data: PresalesServicesGridFragment;
+    displaySettings: DisplaySettingsFragment[];
+    contentPayload: ContentPayload;
+}
+
+const { key, data } = Astro.props as Props;
+
+type ServiceItem = Extract<NonNullable<NonNullable<PresalesServicesGridFragment['ServiceItems']>[number]>, { __typename?: 'presales_ServiceItem' }>;
+
+const serviceItems = (data?.ServiceItems || []).filter((item): item is ServiceItem => item?.__typename === 'presales_ServiceItem');
+
+const componentClass = 'component-presales-services-grid';
+---
+
+<section
+    class:list={[componentClass, 'bg-[#F7F8FA] py-14 lg:py-20']}
+    data-epi-block-id={isCmsEdit && key || undefined}
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section header -->
+        {(data?.SectionLabel || data?.Heading) && (
+            <div class="text-center mb-8 lg:mb-10">
+                {data?.SectionLabel && (
+                    <p class="text-sm font-semibold text-[#2EA84A] uppercase tracking-widest mb-2">
+                        {data.SectionLabel}
+                    </p>
+                )}
+                {data?.Heading && (
+                    <h2 class="text-2xl lg:text-3xl font-extrabold text-[#003087]">
+                        {data.Heading}
+                    </h2>
+                )}
+            </div>
+        )}
+
+        <!-- Services grid -->
+        {serviceItems.length > 0 && (
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-4">
+                {serviceItems.map((item) => {
+                    const isCurrent = item?.IsCurrentSpecialty === 'yes';
+                    const href = item?.ServiceLink ? getLink(item.ServiceLink as ButtonLinkData, currentDomain) : null;
+
+                    const cardContent = (
+                        <div
+                            class:list={[
+                                'relative flex flex-col items-center justify-center text-center rounded-xl p-4 border-2 transition-all duration-200',
+                                isCurrent
+                                    ? 'bg-[#003087] text-white border-[#003087]'
+                                    : 'bg-white text-gray-600 border-gray-200 hover:shadow-md hover:border-[#2EA84A]',
+                            ]}
+                        >
+                            <!-- Highlight badge -->
+                            {isCurrent && item?.HighlightLabel && (
+                                <div class="absolute -top-2.5 -right-2.5 bg-[#2EA84A] text-white text-xs font-bold px-2 py-0.5 rounded-full leading-tight">
+                                    {item.HighlightLabel}
+                                </div>
+                            )}
+
+                            <!-- Emoji icon -->
+                            {item?.Emoji && (
+                                <span class="text-3xl mb-2 leading-none" aria-hidden="true">
+                                    {item.Emoji}
+                                </span>
+                            )}
+
+                            <!-- Service name -->
+                            <span class:list={['text-sm font-medium leading-tight', isCurrent ? 'text-white' : 'text-gray-700']}>
+                                {item?.ServiceName}
+                            </span>
+                        </div>
+                    );
+
+                    return href ? (
+                        <a href={href} class="block no-underline">
+                            {cardContent}
+                        </a>
+                    ) : (
+                        <div>
+                            {cardContent}
+                        </div>
+                    );
+                })}
+            </div>
+        )}
+    </div>
+</section>

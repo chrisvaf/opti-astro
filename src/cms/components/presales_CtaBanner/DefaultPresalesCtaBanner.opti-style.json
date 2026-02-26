@@ -1,0 +1,7 @@
+{
+    "key": "DefaultPresalesCtaBanner",
+    "displayName": "CTA Banner (Health Demo)",
+    "contentType": "presales_CtaBanner",
+    "isDefault": true,
+    "settings": {}
+}

@@ -1,0 +1,102 @@
+{
+    "key": "presales_HeroSection",
+    "displayName": "Presales - Hero Section",
+    "description": "Health demo hero section with navy background, image overlay, breadcrumb, specialty badge, split-color headline, and trust badges.",
+    "baseType": "component",
+    "sortOrder": 0,
+    "mayContainTypes": [],
+    "mediaFileExtensions": [],
+    "compositionBehaviors": ["sectionEnabled"],
+    "properties": {
+        "BackgroundImage": {
+            "type": "contentReference",
+            "displayName": "Background Image",
+            "description": "Background photo displayed at low opacity behind the navy overlay",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 10,
+            "editorSettings": {},
+            "allowedTypes": ["Image"],
+            "restrictedTypes": []
+        },
+        "BreadcrumbItems": {
+            "type": "array",
+            "displayName": "Breadcrumb Items",
+            "description": "Breadcrumb navigation links shown at the top of the hero (e.g. Home › Orthopedics › Make an Appointment)",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 20,
+            "editorSettings": {},
+            "items": {
+                "type": "content",
+                "allowedTypes": [],
+                "restrictedTypes": []
+            }
+        },
+        "SpecialtyBadge": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Specialty Badge",
+            "description": "Text in the green pill badge below the breadcrumb, e.g. 'Orthopedic & Sports Medicine'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 30,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "HeadlineFirst": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Headline — First Part (White)",
+            "description": "White-colored part of the main headline, e.g. 'Expert Orthopedic'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 40,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "HeadlineSecond": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Headline — Second Part (Green)",
+            "description": "Green-colored part of the main headline, e.g. 'Care Near You'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 50,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "Subheading": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Subheading",
+            "description": "Descriptive text shown below the main headline",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 60,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "TrustBadges": {
+            "type": "array",
+            "displayName": "Trust Badges",
+            "description": "Row of trust badge pills shown below the subheading (e.g. 'Board-certified surgeons')",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 70,
+            "editorSettings": {},
+            "items": {
+                "type": "content",
+                "allowedTypes": [],
+                "restrictedTypes": []
+            }
+        }
+    }
+}

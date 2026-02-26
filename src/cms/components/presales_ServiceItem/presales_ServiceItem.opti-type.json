@@ -1,0 +1,74 @@
+{
+    "key": "presales_ServiceItem",
+    "displayName": "Presales - Service Item",
+    "description": "A single service card in the health demo services quick links grid.",
+    "baseType": "component",
+    "sortOrder": 0,
+    "mayContainTypes": [],
+    "mediaFileExtensions": [],
+    "compositionBehaviors": [],
+    "properties": {
+        "Emoji": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Emoji",
+            "description": "Emoji icon for the service card, e.g. ❤️ 🦴 👶",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 10,
+            "editorSettings": {}
+        },
+        "ServiceName": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Service Name",
+            "description": "Name of the specialty or service",
+            "localized": true,
+            "required": true,
+            "group": "Information",
+            "sortOrder": 20,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "ServiceLink": {
+            "type": "component",
+            "contentType": "link",
+            "displayName": "Service Link",
+            "description": "Where clicking this service card navigates to",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 30,
+            "editorSettings": {}
+        },
+        "IsCurrentSpecialty": {
+            "type": "string",
+            "format": "selectOne",
+            "displayName": "Highlight as Current Specialty",
+            "description": "Show this card with navy background and a badge (e.g. 'You're here')",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 40,
+            "editorSettings": {},
+            "enum": {
+                "values": [
+                    { "displayName": "No", "value": "no" },
+                    { "displayName": "Yes — highlight as current specialty", "value": "yes" }
+                ]
+            }
+        },
+        "HighlightLabel": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Highlight Badge Label",
+            "description": "Badge text shown on the highlighted card, e.g. 'You're here'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 50,
+            "editorSettings": {}
+        }
+    }
+}

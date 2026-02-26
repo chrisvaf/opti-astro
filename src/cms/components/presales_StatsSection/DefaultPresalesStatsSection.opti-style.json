@@ -1,0 +1,7 @@
+{
+    "key": "DefaultPresalesStatsSection",
+    "displayName": "Stats Section (Health Demo)",
+    "contentType": "presales_StatsSection",
+    "isDefault": true,
+    "settings": {}
+}
