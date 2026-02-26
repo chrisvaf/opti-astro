@@ -17,7 +17,7 @@ export interface Props {
 
 const { key, data } = Astro.props as Props;
 
-type StatItem = Extract<NonNullable<NonNullable<PresalesStatsSectionFragment['StatItems']>[number]>, { __typename?: 'presales_StatItem' }>;
+type StatItem = Extract<NonNullable<NonNullable<PresalesStatsSectionFragment['StatItems']>[number]>, { __typename: 'presales_StatItem' }>;
 
 const statItems = (data?.StatItems || []).filter((item): item is StatItem => item?.__typename === 'presales_StatItem');
 

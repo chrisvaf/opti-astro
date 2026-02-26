@@ -19,7 +19,7 @@ export interface Props {
 
 const { key, data } = Astro.props as Props;
 
-type ServiceItem = Extract<NonNullable<NonNullable<PresalesServicesGridFragment['ServiceItems']>[number]>, { __typename?: 'presales_ServiceItem' }>;
+type ServiceItem = Extract<NonNullable<NonNullable<PresalesServicesGridFragment['ServiceItems']>[number]>, { __typename: 'presales_ServiceItem' }>;
 
 const serviceItems = (data?.ServiceItems || []).filter((item): item is ServiceItem => item?.__typename === 'presales_ServiceItem');
 

@@ -11,7 +11,8 @@
       "Bash(yarn style:push DefaultPresalesHeroSection)",
       "Bash(yarn style:push DefaultPresalesStatsSection)",
       "Bash(yarn style:push DefaultPresalesServicesGrid)",
-      "Bash(yarn style:push DefaultPresalesCtaBanner)"
+      "Bash(yarn style:push DefaultPresalesCtaBanner)",
+      "Bash(yarn install)"
     ]
   }
 }

@@ -2,6 +2,7 @@ fragment PresalesServicesGrid on presales_ServicesGrid {
     SectionLabel
     Heading
     ServiceItems {
+        __typename
         ... on presales_ServiceItem {
             Emoji
             ServiceName

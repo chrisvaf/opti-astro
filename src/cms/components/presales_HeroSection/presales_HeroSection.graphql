@@ -3,6 +3,7 @@ fragment PresalesHeroSection on presales_HeroSection {
         ...ContentUrl
     }
     BreadcrumbItems {
+        __typename
         ... on presales_BreadcrumbItem {
             Label
             Link {
@@ -15,6 +16,7 @@ fragment PresalesHeroSection on presales_HeroSection {
     HeadlineSecond
     Subheading
     TrustBadges {
+        __typename
         ... on presales_TrustBadge {
             Text
         }

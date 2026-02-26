@@ -5,6 +5,7 @@ fragment PresalesStatsSection on presales_StatsSection {
         html
     }
     StatItems {
+        __typename
         ... on presales_StatItem {
             IconKey
             StatNumber
