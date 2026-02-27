@@ -24,4 +24,5 @@ fragment AllComponentsExceptGrid on _IComponent {
     ...PresalesStatsSection
     ...PresalesServicesGrid
     ...PresalesCtaBanner
+    ...PresalesBookingStep1
 }

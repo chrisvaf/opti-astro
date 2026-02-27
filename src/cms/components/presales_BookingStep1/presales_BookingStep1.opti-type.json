@@ -1,0 +1,159 @@
+{
+    "key": "presales_BookingStep1",
+    "displayName": "Presales - Booking Wizard (Steps 1–2)",
+    "description": "Health demo online booking wizard — Steps 1 & 2: care type selection and location picker. DefaultStep controls which step is shown on first render.",
+    "baseType": "component",
+    "sortOrder": 0,
+    "mayContainTypes": [],
+    "mediaFileExtensions": [],
+    "compositionBehaviors": ["sectionEnabled"],
+    "properties": {
+        "SectionLabel": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Section Label",
+            "description": "Green eyebrow text above the wizard, e.g. 'Online Booking'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 5,
+            "editorSettings": {}
+        },
+        "SectionHeading": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Section Heading",
+            "description": "Main heading above the wizard, e.g. 'Schedule your visit in just a few steps'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 8,
+            "editorSettings": {}
+        },
+        "Heading": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Heading",
+            "description": "Step heading, e.g. 'What type of care do you need?'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 10,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "Subheading": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Subheading",
+            "description": "Small text below the heading, e.g. 'Select one to get started'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 20,
+            "editorSettings": {}
+        },
+        "ContextBannerText": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Context Banner Text",
+            "description": "Specialty context shown above the step content, e.g. 'Booking for: Orthopedic & Sports Medicine'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 30,
+            "editorSettings": {}
+        },
+        "ContinueButtonLabel": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Continue Button Label",
+            "description": "Label for the continue/next button, e.g. 'Continue'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 40,
+            "editorSettings": {}
+        },
+        "CareTypeItems": {
+            "type": "array",
+            "displayName": "Care Type Items",
+            "description": "The selectable care type cards (5 recommended)",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 50,
+            "editorSettings": {},
+            "items": {
+                "type": "content",
+                "allowedTypes": [],
+                "restrictedTypes": []
+            }
+        },
+        "LocationHeading": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Location Step Heading",
+            "description": "Step 2 heading, e.g. 'Find a location near you'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 60,
+            "editorSettings": {}
+        },
+        "LocationSubheading": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Location Step Subheading",
+            "description": "Step 2 subheading, e.g. 'Enter your ZIP code or use your current location'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 70,
+            "editorSettings": {}
+        },
+        "ZipCodeDefault": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Default ZIP Code",
+            "description": "Pre-filled ZIP code in the search field, e.g. '33176'",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 80,
+            "editorSettings": {}
+        },
+        "LocationItems": {
+            "type": "array",
+            "displayName": "Location Items",
+            "description": "The bookable location cards shown in Step 2",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 90,
+            "editorSettings": {},
+            "items": {
+                "type": "content",
+                "allowedTypes": [],
+                "restrictedTypes": []
+            }
+        },
+        "DefaultStep": {
+            "type": "string",
+            "format": "selectOne",
+            "displayName": "Default Step",
+            "description": "Which step is active on first render. Use '2' when a care type is already implied by page context.",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 100,
+            "editorSettings": {},
+            "enum": {
+                "values": [
+                    { "displayName": "Step 1 — Care Type", "value": "1" },
+                    { "displayName": "Step 2 — Location", "value": "2" }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+fragment PresalesBookingStep1 on presales_BookingStep1 {
+    SectionLabel
+    SectionHeading
+    Heading
+    Subheading
+    ContextBannerText
+    ContinueButtonLabel
+    CareTypeItems {
+        __typename
+        ... on presales_CareTypeItem {
+            IconKey
+            Label
+            Description
+            WaitTime
+        }
+    }
+    LocationHeading
+    LocationSubheading
+    ZipCodeDefault
+    LocationItems {
+        __typename
+        ... on presales_LocationItem {
+            Name
+            Address
+            City
+            Miles
+            NextAvailable
+            LocationType
+            Hours
+        }
+    }
+    DefaultStep
+}

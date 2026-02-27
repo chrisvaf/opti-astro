@@ -1,0 +1,66 @@
+{
+    "key": "presales_CareTypeItem",
+    "displayName": "Presales - Care Type Item",
+    "description": "A selectable care type card in the booking wizard step 1 (e.g. Urgent Care, Virtual Visit).",
+    "baseType": "component",
+    "sortOrder": 0,
+    "mayContainTypes": [],
+    "mediaFileExtensions": [],
+    "compositionBehaviors": [],
+    "properties": {
+        "IconKey": {
+            "type": "string",
+            "format": "selectOne",
+            "displayName": "Icon",
+            "description": "Icon displayed on the care type card",
+            "localized": false,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 10,
+            "editorSettings": {},
+            "enum": {
+                "values": [
+                    { "displayName": "Lightning / Urgent", "value": "zap" },
+                    { "displayName": "Stethoscope / Primary Care", "value": "stethoscope" },
+                    { "displayName": "Video / Virtual Visit", "value": "video" },
+                    { "displayName": "Heart / Specialty Care", "value": "heart" },
+                    { "displayName": "Brain / Mental Health", "value": "brain" }
+                ]
+            }
+        },
+        "Label": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Label",
+            "description": "Care type name shown on the card, e.g. 'Urgent Care'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 20,
+            "indexingType": "searchable",
+            "editorSettings": {}
+        },
+        "Description": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Description",
+            "description": "Short description shown on the card, e.g. 'Non-emergency conditions needing same-day attention'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 30,
+            "editorSettings": {}
+        },
+        "WaitTime": {
+            "type": "string",
+            "format": "shortString",
+            "displayName": "Wait Time",
+            "description": "Availability text shown as a badge, e.g. 'Today', 'Within 3 days'",
+            "localized": true,
+            "required": false,
+            "group": "Information",
+            "sortOrder": 40,
+            "editorSettings": {}
+        }
+    }
+}

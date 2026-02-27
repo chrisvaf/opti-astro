@@ -1,0 +1,7 @@
+{
+    "key": "DefaultPresalesBookingStep1",
+    "displayName": "Booking Step 1 (Health Demo)",
+    "contentType": "presales_BookingStep1",
+    "isDefault": true,
+    "settings": {}
+}

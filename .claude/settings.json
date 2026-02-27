@@ -12,7 +12,12 @@
       "Bash(yarn style:push DefaultPresalesStatsSection)",
       "Bash(yarn style:push DefaultPresalesServicesGrid)",
       "Bash(yarn style:push DefaultPresalesCtaBanner)",
-      "Bash(yarn install)"
+      "Bash(yarn install)",
+      "Bash(find /Users/chris.vafiadis/Documents/Work/Code/opti-astro/src/cms/components/presales_* -name \"*.opti-style.json\")",
+      "Bash(yarn type:push presales_CareTypeItem)",
+      "Bash(yarn type:push presales_BookingStep1)",
+      "Bash(yarn style:push DefaultPresalesBookingStep1)",
+      "Bash(yarn type:push presales_LocationItem)"
     ]
   }
 }

@@ -23,6 +23,7 @@ import PresalesHeroSection from './presales_HeroSection/presales_HeroSection.ast
 import PresalesStatsSection from './presales_StatsSection/presales_StatsSection.astro';
 import PresalesServicesGrid from './presales_ServicesGrid/presales_ServicesGrid.astro';
 import PresalesCtaBanner from './presales_CtaBanner/presales_CtaBanner.astro';
+import PresalesBookingStep1 from './presales_BookingStep1/presales_BookingStep1.astro';
 
 interface Props {
     contentPayload: ContentPayload;
@@ -267,6 +268,17 @@ const componentType = component._metadata.types[0];
 {
     componentType === 'presales_CtaBanner' && (
         <PresalesCtaBanner
+            key={data?.key}
+            contentPayload={contentPayload}
+            data={component}
+            displaySettings={displaySettings}
+        />
+    )
+}
+
+{
+    componentType === 'presales_BookingStep1' && (
+        <PresalesBookingStep1
             key={data?.key}
             contentPayload={contentPayload}
             data={component}
